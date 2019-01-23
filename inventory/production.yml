@@ -17,8 +17,6 @@ all: # keys must be unique, i.e. only one 'hosts' per group
               ansible_host: 192.168.0.1
             app2:
               ansible_host: 192.168.0.2
-            appv: # primary server has the virtual ip
-              ansible_host: 192.168.0.3
         dbservers:
           hosts:
             somedbhost:

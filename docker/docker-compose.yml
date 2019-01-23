@@ -1,0 +1,11 @@
+version: '3'
+services:
+  sshd:
+    build: .
+    image: ansible-test:latest
+    ports:
+     - "2022:22" # bines local port 2022 to container port 22 / sshd
+     - "8080:80" # binds local port 8080 to container port 80 / httpd
+    # entrypoint: "/usr/sbin/sshd -D "
+    # useful for debugging ssh connectivity issues
+    # entrypoint: "/usr/sbin/sshd -D -d"
