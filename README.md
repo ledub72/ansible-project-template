@@ -3,18 +3,19 @@ This is a skeleton of an Ansible home directory. You can control all of your app
 
 This repo was designed to help new Ansible users to get up and running quickly. Feel free to add to it and add additional tips and tricks. Pull requests welcome.
 
+This repo includes a docker compose template for quick and easy testing of your ansible projects
+
 # customizations:
 
 I used [mattjbarlow/ansible-directory](https://github.com/mattjbarlow/ansible-directory) as a start but made the following changes
 I didn't produce a pull request against his repo as this one deviates from it significantly.
 
-* handle playbooks in subdirectories. <br/>
-  https://github.com/ansible/ansible/issues/12862
+* [handle playbooks in subdirectories.](https://github.com/ansible/ansible/issues/12862)
 * Puth host_vars and group_vars in a separate inventory subdirectory
 * exclusively use yaml / yml files for inventory, variables. <br/>
   There is now a consistent use of yaml through out this ansible directory template
 * separate sub directory for community roles <br/>
-  https://blog.theodo.fr/2015/10/best-practices-to-build-great-ansible-playbooks/
+  [best-practices-to-build-great-ansible-playbooks](https://blog.theodo.fr/2015/10/best-practices-to-build-great-ansible-playbooks/)
 * include a local ansible.cfg file to override defaults. <br/>
   In order for all these changes to work <br/>
   * set roles dir so play books work from subdirectory
@@ -28,24 +29,23 @@ I didn't produce a pull request against his repo as this one deviates from it si
   Assumes you have docker / docker compose installed and working on your machine <br/>
   This is used to check your plays work and config is set correctly. <br/>
   This is not used to deploy dockrized environments. <br/>
-  http://devo.ps/blog/vagrant-docker-and-ansible-wtf/
+  [vagrant-docker-and-ansible-wtf](http://devo.ps/blog/vagrant-docker-and-ansible-wtf/)
 
+## inspired by
 
-# inspired by
+[https://blog.newrelic.com/engineering/ansible-best-practices-guide/](https://blog.newrelic.com/engineering/ansible-best-practices-guide/) <br/>
+[https://github.com/ansible/ansible/issues/12862](https://github.com/ansible/ansible/issues/12862) <br/>
+[https://leucos.github.io/ansible-files-layout](https://leucos.github.io/ansible-files-layout) <br/>
+[https://github.com/ansible/ansible-examples](https://github.com/ansible/ansible-examples) <br/>
+[https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html) <br/>
+[https://blog.theodo.fr/2015/10/best-practices-to-build-great-ansible-playbooks/](https://blog.theodo.fr/2015/10/best-practices-to-build-great-ansible-playbooks/) <br/>
+[http://devo.ps/blog/vagrant-docker-and-ansible-wtf/](http://devo.ps/blog/vagrant-docker-and-ansible-wtf/) <br/>
 
-https://blog.newrelic.com/engineering/ansible-best-practices-guide/ <br/>
-https://github.com/ansible/ansible/issues/12862 <br/>
-https://leucos.github.io/ansible-files-layout <br/>
-https://github.com/ansible/ansible-examples <br/>
-https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html <br/>
-https://blog.theodo.fr/2015/10/best-practices-to-build-great-ansible-playbooks/ <br/>
-http://devo.ps/blog/vagrant-docker-and-ansible-wtf/ <br/>
-
-# Ansible Tips #
+## Ansible Tips #
 
 ## Using plays in a subdirectory
 
-Get docker compose up and running
+Get [docker compose](docker\README.md) up and running
 
 ```
 cd /tmp/
@@ -59,8 +59,6 @@ ansible-playbook ./site.yml -l local -i ./inventory/staging.yml -u root
 
 # run test play book in subdir
 ansible-playbook ./plays/test-play.yml -l local -i ./inventory/staging.yml -u root
-
-
 ```
 
 ## Ansible roles
