@@ -45,7 +45,7 @@ I didn't produce a pull request against his repo as this one deviates from it si
 
 ## Using plays in a subdirectory
 
-Get [docker compose](docker\README.md) up and running
+Get [docker compose](docker/README.md) up and running
 
 ```
 cd /tmp/
