@@ -20,7 +20,7 @@ change the part after the `'root:'` to `'root:yournewpass'`
 ssh -o 'StrictHostKeyChecking=no' -o 'UserKnownHostFile=/dev/null' -p 2022 -l root 127.0.0.1
 ```
 
-https://askubuntu.com/questions/87449/how-to-disable-strict-host-key-checking-in-ssh/385187#385187
+[https://askubuntu.com/questions/87449/how-to-disable-strict-host-key-checking-in-ssh/385187#385187](https://askubuntu.com/questions/87449/how-to-disable-strict-host-key-checking-in-ssh/)
 
 ## Docker file
 
@@ -65,4 +65,5 @@ CMD ["-D" ]
 
 ## Inspired by
 
-http://devo.ps/blog/vagrant-docker-and-ansible-wtf/
+[http://devo.ps/blog/vagrant-docker-and-ansible-wtf/](http://devo.ps/blog/vagrant-docker-and-ansible-wtf/)
+[https://docs.docker.com/engine/examples/running_ssh_service/](https://docs.docker.com/engine/examples/running_ssh_service/)
