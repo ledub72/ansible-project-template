@@ -1,0 +1,10 @@
+---
+# test play in a sub directory
+
+- name: test-play.yml apply common configuration to all nodes
+  hosts: all
+  user: root
+
+  roles:
+    - common
+    - community/ansible-galaxy-play

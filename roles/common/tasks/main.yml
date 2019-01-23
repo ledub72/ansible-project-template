@@ -1,2 +1,12 @@
 ---
 # tasks file for common
+
+  - name: common task place holder noop
+    meta: noop
+
+  - name: common task place holder noop
+    meta: noop
+
+  - name: common debug message hello world
+    debug: #
+      msg: "System {{ inventory_hostname }} says hello world"
