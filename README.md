@@ -97,6 +97,15 @@ ansible-playbook ./site.yml -l local -i ./inventory/staging.yml -u root
 ansible-playbook ./plays/test-play.yml -l local -i ./inventory/staging.yml -u root
 ```
 
+## Docker 
+
+<pre>
+├── docker
+│   ├── docker-compose.yml
+│   ├── Dockerfile
+│   └── README.md
+</pre>
+
 ## Ansible roles
 In your roles directory, type ansible-galaxy init <em>role_name</em> in order to generate an empty skeleton for a new role you are working on.
 
@@ -117,50 +126,62 @@ Based on [Ansible Best Practices](https://docs.ansible.com/ansible/playbooks_bes
 https://docs.ansible.com/ansible/latest/user_guide/sample_setup.html#sts=Sample%20directory%20layout%EF%83%81
 
 <pre>
-inventory
-   production.yml         # inventory file for production servers
-   staging.yml            # inventory file for staging environment
-
-   group_vars
-      all.yml             # all.yml so you can gloably set variables for all groups
-      group1.yml          # here we assign variables to particular groups
-      group2.yml          # ""
-   host_vars
-      hostname1.yml       # if systems need specific variables, put them here
-      hostname2.yml       # ""
-
-library/                  # if any custom modules, put them here (optional)
-filter_plugins/           # if any custom filter plugins, put them here (optional)
-
-plays
-   webservers.yml         # playbook for webserver tier
-   dbservers.yml          # playbook for dbserver tier
-site.yml                  # master playbook
-
-roles/
-    community
-        ansible-galaxy-play
-    common/               # this hierarchy represents a "role"
-        tasks/            #
-            main.yml      #  <-- tasks file can include smaller files if warranted
-        handlers/         #
-            main.yml      #  <-- handlers file
-        templates/        #  <-- files for use with the template resource
-            ntp.conf.j2   #  <------- templates end in .j2
-        files/            #
-            bar.txt       #  <-- files for use with the copy resource
-            foo.sh        #  <-- script files for use with the script resource
-        vars/             #
-            main.yml      #  <-- variables associated with this role
-        defaults/         #
-            main.yml      #  <-- default lower priority variables for this role
-        meta/             #
-            main.yml      #  <-- role dependencies
-
-    webtier/              # same kind of structure as "common" was above, done for the webtier role
-    monitoring/           # ""
-    fooapp/               # ""
-
-ansible.cfg               # Override some defaults so this directory structure will work from any where
+├── ansible.cfg            # Override some defaults so this directory structure will work from any where
+├── filter_plugins         # if any custom filter plugins, put them here (optional)
+├── inventory
+│   ├── group_vars
+│   │   ├── all.yml        # all.yml so you can globally set variables for all groups
+│   │   ├── group1.yml     # here we assign variables to particular groups
+│   │   └── local.yml      # ""
+│   ├── host_vars
+│   │   └── hostname1.yml  # here we assign variables to particular systems
+│   ├── production.yml     # inventory file for production servers
+│   └── staging.yml        # inventory file for staging environment
+├── library                # if any custom modules, put them here (optional)
+├── module_utils           # if any custom module_utils to support modules, put them here (optional)
+├── plays
+│   └── test-play.yml      # playbook for test this skeleton
+├── roles
+│   ├── common             # this hierarchy represents a "role"
+│   │   ├── defaults
+│   │   │   └── main.yml   #  <-- default lower priority variables for this role
+│   │   ├── files
+│   │   │   ├── bar.txt    #  <-- files for use with the copy resource
+│   │   │   └── foo.sh     #  <-- script files for use with the script resource
+│   │   ├── handlers
+│   │   │   └── main.yml   # <-- handlers file
+│   │   ├── library        # roles can also include custom modules
+│   │   ├── lookup_plugins # or other types of plugins, like lookup in this case
+│   │   ├── meta
+│   │   │   └── main.yml   #  <-- role dependencies
+│   │   ├── module_utils   # roles can also include custom module_utils
+│   │   ├── README.md
+│   │   ├── tasks
+│   │   │   └── main.yml   # <-- tasks file can include smaller files if warranted
+│   │   ├── templates      # <-- files for use with the template resource
+│   │   │   └── example-template.conf.j2        # <------- templates end in .j2
+│   │   └── vars
+│   │       └── main.yml   #  <-- variables associated with this role
+│   └── community
+│       └── ansible-galaxy-play
+│           ├── defaults
+│           │   └── main.yml
+│           ├── files
+│           │   ├── bar.txt
+│           │   └── foo.sh
+│           ├── handlers
+│           │   └── main.yml
+│           ├── library
+│           ├── lookup_plugins
+│           ├── meta
+│           │   └── main.yml
+│           ├── module_utils
+│           ├── README.md
+│           ├── tasks
+│           │   └── main.yml
+│           ├── templates
+│           │   └── example-template.conf.j2
+│           └── vars
+│               └── main.yml
+└── site.yml              # main playbook
 </pre>
-
